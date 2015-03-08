@@ -1,0 +1,37 @@
+//
+// Header
+//
+
+header {
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+.sidebar {
+  padding-left: 40px;
+  line-height: 1.6em;
+}
+
+.site-title {
+  font-size: $regular;
+
+  a {
+    color: #fff;
+  }
+}
+
+
+.menu {
+  [class*="current"] {
+    a {
+      color: #fff;
+    }
+  }
+}

@@ -1,8 +1,8 @@
 /*!
-Theme Name: Sarah Walker
+Theme Name: 5andbox
 Theme URI: https://github.com/dylanfisher/5andbox
 Author: <a href="http://www.dylanfisher.com/">Dylan Fisher</a>
-Description: A website for Sarah Walker, built in Wordpress, designed and developed by Dylan Fisher.
+Description: This theme is a stripped down and repurposed version of the original Sandbox Wordpress theme. It incorporates the HTML5 boilerplate, SASS and a Grunt workflow.
 Version: 1.0
                           _
                         .' `'.__
@@ -25,6 +25,7 @@ Version: 1.0
 */
 
 // Modules (these shouldn't output any CSS)
+@import "modules/fonts";
 @import "modules/variables";
 @import "modules/extends";
 @import "modules/mixins";
@@ -34,8 +35,11 @@ Version: 1.0
 @import "base/base_styles";
 @import "base/helper_classes";
 @import "base/chromeframe";
+@import "base/typography";
+@import "base/main";
 
 // Partials
+@import "partials/header";
 @import "partials/home";
 
 // Vendor

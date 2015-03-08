@@ -1,8 +1,8 @@
 /*!
-Theme Name: Sarah Walker
+Theme Name: 5andbox
 Theme URI: https://github.com/dylanfisher/5andbox
 Author: <a href="http://www.dylanfisher.com/">Dylan Fisher</a>
-Description: A website for Sarah Walker, built in Wordpress, designed and developed by Dylan Fisher.
+Description: This theme is a stripped down and repurposed version of the original Sandbox Wordpress theme. It incorporates the HTML5 boilerplate, SASS and a Grunt workflow.
 Version: 1.0
                           _
                         .' `'.__
@@ -23,6 +23,14 @@ Version: 1.0
   `""`   \  nnh  D_.-'L__nnh
           `"""`
 */
+.wrapper {
+  *zoom: 1; }
+  .wrapper:before, .wrapper:after {
+    content: " ";
+    display: table; }
+  .wrapper:after {
+    clear: both; }
+
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -346,11 +354,17 @@ td, th {
   box-sizing: border-box; }
 
 html, button, input, select, textarea {
-  color: #000; }
+  color: #A3A3A3; }
 
-body {
-  font-size: 1em;
-  line-height: 1.4; }
+html {
+  background-color: #000; }
+
+a {
+  color: #A3A3A3;
+  text-decoration: none;
+  transition: color 0.6s cubic-bezier(0.215, 0.61, 0.355, 1); }
+  a:hover {
+    color: #fff; }
 
 hr {
   display: block;
@@ -361,7 +375,10 @@ hr {
   padding: 0; }
 
 img {
-  vertical-align: middle; }
+  vertical-align: middle;
+  max-width: 100%;
+  width: auto;
+  height: auto; }
 
 fieldset {
   border: 0;
@@ -458,6 +475,71 @@ h1, h2, h3, h4, h5, h6 {
   background: #FFE2D4;
   color: #000;
   padding: 20px; }
+
+html {
+  letter-spacing: 0.05em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+  line-height: 1.4; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+header {
+  width: 20%;
+  float: left;
+  margin-top: 20%;
+  margin-top: 20vh; }
+
+.content {
+  width: 80%;
+  float: left; }
+
+.page-template-page-images .entry-content {
+  margin-top: 6px; }
+.page-template-page-images img {
+  max-height: 100px;
+  margin: 0 6px 6px 0;
+  opacity: 0.8;
+  transition: opacity 0.4s;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  cursor: pointer; }
+  .page-template-page-images img:hover {
+    opacity: 1; }
+
+header ul, header li {
+  margin: 0;
+  padding: 0; }
+header li {
+  list-style: none; }
+
+.sidebar {
+  padding-left: 40px;
+  line-height: 1.6em; }
+
+.site-title {
+  font-size: 16px; }
+  .site-title a {
+    color: #fff; }
+
+.menu [class*="current"] a {
+  color: #fff; }
+
+.home .featured-image {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(5px);
+  opacity: 0.4;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
 
 .alignnone {
   margin: 5px 20px 20px 0; }
