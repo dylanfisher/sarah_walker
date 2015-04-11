@@ -9,11 +9,11 @@ button,
 input,
 select,
 textarea {
-  color: #A3A3A3;
+  color: $gray;
 }
 
 html {
-  background-color: #000;
+  background-color: $body-color;
 }
 
 ::selection {
@@ -22,12 +22,18 @@ html {
 }
 
 a {
-  color: #A3A3A3;
+  color: $gray;
   text-decoration: none;
   transition: color $tt $easing;
 
   &:hover {
     color: #fff;
+  }
+}
+
+.entry-content {
+  a {
+    text-decoration: underline;
   }
 }
 

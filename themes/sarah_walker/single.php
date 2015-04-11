@@ -1,11 +1,15 @@
 <?php get_header() ?>
   <div class="content">
-<?php the_post() ?>
     <div id="post-<?php the_ID() ?>" <?php post_class() ?>>
-      <h2 class="entry-title"><?php the_title() ?></h2>
-      <div class="entry-content">
-<?php the_content() ?>
-      </div>
+      <?php
+        $images = get_attached_media('image');
+        foreach ( $images as $image ):
+          $attrs = array(
+            'data-image-full' => $image->guid
+          );
+          echo wp_get_attachment_image($image->ID, 'full', false, $attrs);
+        endforeach;
+      ?>
     </div><!-- .post -->
   </div><!-- .content -->
 <?php get_footer() ?>

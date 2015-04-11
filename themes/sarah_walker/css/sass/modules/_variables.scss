@@ -8,9 +8,19 @@ $akz-black: "Akzidenz Grotesk Black", sans-serif;
 $sans: 'Open Sans', sans-serif;
 
 // Font sizes
-$small: 12px;
+$small: 14px;
 $regular: 16px;
 $large: 24px;
+
+// Colors
+$gray: #A0A0A0;
+$gray-dark: #181B1C;
+
+// Color assignments
+$body-color: $gray-dark;
+
+// Sizes
+$content-margin-top: 40px;
 
 // Transitions
 $tt: 0.6s;

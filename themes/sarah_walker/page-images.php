@@ -7,28 +7,41 @@ Template Name: Images
   <div class="content">
 <?php the_post() ?>
     <div id="page-<?php the_ID() ?>" <?php post_class() ?>>
-      <div class="entry-content">
-        <?php
-          $querystr = "
-            SELECT wposts.ID, wposts.post_title
-            FROM $wpdb->posts wposts
-            WHERE wposts.post_type = 'attachment'
-            AND wposts.post_mime_type = 'image/jpeg'
-            ORDER BY RAND()
-          ";
+      <?php
+        $args = array(
+          'orderby'       => 'term_order',
+          'hide_empty'    => true
+        );
+        $terms = get_terms('category', $args);
 
-          $images = $wpdb->get_results($querystr, ARRAY_A);
-          // var_dump($images);
+        foreach ($terms as $term):
+          $args = array(
+            'post_type' => 'post',
+            'posts_per_page' => -1,
+            'cat' => $term->term_id
+          );
 
-          // $title = wp_get_attachment_image($id[0]['post_title']);
-          // $url =  wp_get_attachment_url($id[0]['ID']);
+          $works = new WP_Query( $args );
 
-          foreach ($images as $image) {
-            $img = wp_get_attachment_image($image['ID'], 'medium');
-            echo $img;
-          }
-        ?>
-      </div>
+          if ( $works->have_posts() ):
+            while ( $works->have_posts() ):
+              $works->the_post();
+
+              $images = get_attached_media('image');
+              foreach ( $images as $image ):
+                $attrs = array(
+                  'data-image-full' => $image->guid
+                );
+                echo '<a href="'.get_permalink().'">';
+                  echo wp_get_attachment_image($image->ID, 'medium', false, $attrs);
+                echo '</a>';
+              endforeach;
+
+            endwhile;
+          endif;
+          wp_reset_postdata();
+        endforeach;
+      ?>
     </div><!-- .post -->
   </div><!-- .content -->
 <?php get_footer() ?>

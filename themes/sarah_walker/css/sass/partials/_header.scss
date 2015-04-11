@@ -15,18 +15,24 @@ header {
 }
 
 .sidebar {
-  padding-left: 40px;
-  line-height: 1.6em;
+  padding-left: $content-margin-top;
 }
 
 .site-title {
-  font-size: $regular;
+  margin-bottom: 1em;
 
   a {
     color: #fff;
   }
 }
 
+.single-work-info {
+  margin-top: $content-margin-top;
+
+  h3 {
+    margin: 0 0 1em;
+  }
+}
 
 .menu {
   [class*="current"] {

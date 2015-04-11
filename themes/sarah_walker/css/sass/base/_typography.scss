@@ -3,14 +3,20 @@
 //
 
 html {
-  letter-spacing: 0.05em;
   font-family: $sans;
   font-weight: 300;
   text-rendering: optimizeLegibility;
-  font-size: $regular;
-  line-height: 1.4;
+  font-size: $small;
+  line-height: 1.45em;
+  letter-spacing: 0.05em;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
+  font-weight: 300;
+  font-size: $small;
+}
+
+h3 {
+  color: #fff;
+  margin: 1em 0;
 }

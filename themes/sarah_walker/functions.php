@@ -14,36 +14,6 @@
 // Custom menus
 add_theme_support( 'menus' );
 
-// Enable support for Advanced Custom Fields JSON data in JSON-API plugin
-add_filter('json_api_encode', 'sandbox_json_api_encode_acf');
-function sandbox_json_api_encode_acf($response) {
-  if (isset($response['posts'])) {
-    foreach ($response['posts'] as $post) {
-      sandbox_json_api_add_acf($post); // Add specs to each post
-    }
-  }
-  else if (isset($response['post'])) {
-    sandbox_json_api_add_acf($response['post']); // Add a specs property
-  }
-
-  return $response;
-}
-
-function sandbox_json_api_add_acf(&$post) {
-  $post->acf = get_fields($post->id);
-}
-
-// Open external links in new windows by default
-function sandbox_autoblank($text) {
-  $return = str_replace('href=', 'target="_blank" href=', $text);
-  $return = str_replace('target="_blank" href="echo home_url()', 'echo home_url()', $return);
-  $return = str_replace('target="_blank" href="#', 'href="#', $return);
-  $return = str_replace(' target = "_blank">', '>', $return);
-  return $return;
-}
-add_filter('the_content', 'sandbox_autoblank');
-add_filter('comment_text', 'sandbox_autoblank');
-
 // Custom Image Sizes
 // add_image_size( 'custom-image-size-name', 300, 300, true ); // Custom Image - Name, Width, Height, Hard Crop boolean
 
@@ -90,7 +60,7 @@ function sandbox_remove_menus(){
   // remove_menu_page( 'edit.php' );                   //Posts
   // remove_menu_page( 'upload.php' );                 //Media
   // remove_menu_page( 'edit.php?post_type=page' );    //Pages
-  // remove_menu_page( 'edit-comments.php' );          //Comments
+  remove_menu_page( 'edit-comments.php' );          //Comments
   // remove_menu_page( 'themes.php' );                 //Appearance
   // remove_menu_page( 'plugins.php' );                //Plugins
   // remove_menu_page( 'users.php' );                  //Users
@@ -139,5 +109,50 @@ function sandbox_content($limit) {
   $content = str_replace(']]>', ']]&gt;', $content);
   return $content;
 }
+
+
+//
+// Filters
+//
+
+// Add page slug to body class
+function sandbox_add_slug_body_class( $classes ) {
+  global $post;
+  if ( isset( $post ) ) {
+    $classes[] = $post->post_type . '-' . $post->post_name;
+  }
+  return $classes;
+}
+add_filter( 'body_class', 'sandbox_add_slug_body_class' );
+
+// Rename "Posts" to "Work"
+// http://new2wp.com/snippet/change-wordpress-posts-post-type-news/
+function sandbox_change_post_menu_label() {
+  global $menu;
+  global $submenu;
+  $menu[5][0] = 'Work';
+  $submenu['edit.php'][5][0] = 'Work';
+  $submenu['edit.php'][10][0] = 'Add Work';
+  $submenu['edit.php'][16][0] = 'Work Tags';
+  echo '';
+}
+
+function sandbox_change_post_object_label() {
+  global $wp_post_types;
+  $labels = &$wp_post_types['post']->labels;
+  $labels->name = 'Work';
+  $labels->singular_name = 'Work';
+  $labels->add_new = 'Add Work';
+  $labels->add_new_item = 'Add Work';
+  $labels->edit_item = 'Edit Work';
+  $labels->new_item = 'Work';
+  $labels->view_item = 'View Work';
+  $labels->search_items = 'Search Work';
+  $labels->not_found = 'No Work found';
+  $labels->not_found_in_trash = 'No Work found in Trash';
+}
+
+add_action( 'admin_menu', 'sandbox_change_post_menu_label' );
+add_action( 'init', 'sandbox_change_post_object_label' );
 
 ?>

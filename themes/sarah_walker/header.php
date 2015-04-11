@@ -47,5 +47,13 @@ Website developed by Dylan Fisher
           <a href="<?php bloginfo('url') ?>/" title="<?php echo esc_html( bloginfo('name'), 1 ) ?>" rel="home"><?php bloginfo('name') ?></a>
         </h1>
         <nav><?php wp_nav_menu(); ?></nav>
+        <?php
+          if(is_single()):
+            echo '<div class="single-work-info">';
+              echo '<h3>'.get_the_title().'</h3>';
+              echo '<div>'.get_field('year').', '.get_field('dimensions').',<br>'.get_field('medium').'</div>';
+            echo '</div>';
+          endif;
+        ?>
       </div>
     </header>
