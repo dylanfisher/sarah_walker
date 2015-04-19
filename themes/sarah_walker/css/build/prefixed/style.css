@@ -529,17 +529,21 @@ header {
 
 .page-cv .entry-content {
   max-width: none; }
+  .page-cv .entry-content > ul > li {
+    margin-left: 4em;
+    text-indent: -4em; }
 .page-cv ul, .page-cv li {
   list-style: none; }
 .page-cv ul {
   padding: 0; }
   .page-cv ul b, .page-cv ul strong {
     font-weight: 300;
-    min-width: 2.8em;
+    min-width: 4em;
     display: inline-block;
     float: left; }
 .page-cv ul > li > ul {
-  padding-left: 2.8em; }
+  padding-left: 4em;
+  margin-bottom: 1em; }
 
 header ul, header li {
   margin: 0;

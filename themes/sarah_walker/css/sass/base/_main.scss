@@ -55,11 +55,16 @@ header {
   }
 }
 
-$indent-size: 2.8em;
+$indent-size: 4em;
 
 .page-cv {
   .entry-content {
     max-width: none;
+
+    & > ul > li {
+      margin-left: 4em;
+      text-indent: -4em;
+    }
   }
 
   ul, li {
@@ -79,6 +84,7 @@ $indent-size: 2.8em;
 
   ul > li > ul {
     padding-left: $indent-size;
+    margin-bottom: 1em;
   }
 
 }

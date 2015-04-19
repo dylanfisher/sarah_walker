@@ -30,7 +30,7 @@ Website developed by Dylan Fisher
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="icon" type="image/png" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.png">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="<?php echo  bloginfo('stylesheet_url'); ?>" />
   <script src="<?php echo get_bloginfo('template_url'); ?>/js/modernizr.custom.45797.js"></script>
   <?php wp_enqueue_script('jquery') // runs in noConflict mode ?>
@@ -53,6 +53,10 @@ Website developed by Dylan Fisher
               echo '<h3>'.get_the_title().'</h3>';
               echo '<div>'.get_field('year').', '.get_field('dimensions').',<br>'.get_field('medium').'</div>';
             echo '</div>';
+            echo '<br>';
+            previous_post_link('%link', 'Previous');
+            echo '&nbsp;&nbsp;&nbsp;&nbsp;';
+            next_post_link('%link', 'Next');
           endif;
         ?>
       </div>

@@ -20,7 +20,6 @@ add_theme_support( 'menus' );
 // Check for custom Single Post templates by category ID. Format for new template names is single-category[ID#].php (ommiting the brackets)
 // add_filter('single_template', create_function('$t', 'foreach( (array) get_the_category() as $cat ) { if ( file_exists(TEMPLATEPATH . "/single-{$cat->term_id}.php") ) return TEMPLATEPATH . "/single-{$cat->term_id}.php"; } return $t;' ));
 
-
 //
 // Disables
 //
@@ -114,6 +113,35 @@ function sandbox_content($limit) {
 //
 // Filters
 //
+
+function sandbox_adjacent_post_where($sql) {
+  if ( !is_main_query() || !is_singular() )
+    return $sql;
+
+  $the_post = get_post( get_the_ID() );
+  $patterns = array();
+  $patterns[] = '/post_date/';
+  $patterns[] = '/\'[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\'/';
+  $replacements = array();
+  $replacements[] = 'menu_order';
+  $replacements[] = $the_post->menu_order;
+  // print_r(preg_replace( $patterns, $replacements, $sql ));
+  return preg_replace( $patterns, $replacements, $sql );
+}
+add_filter( 'get_next_post_where', 'sandbox_adjacent_post_where' );
+add_filter( 'get_previous_post_where', 'sandbox_adjacent_post_where' );
+
+function sandbox_adjacent_post_sort($sql) {
+  if ( !is_main_query() || !is_singular() )
+    return $sql;
+
+  $pattern = '/post_date/';
+  $replacement = 'menu_order';
+  // print_r(preg_replace( $pattern, $replacement, $sql ));
+  return preg_replace( $pattern, $replacement, $sql );
+}
+add_filter( 'get_next_post_sort', 'sandbox_adjacent_post_sort' );
+add_filter( 'get_previous_post_sort', 'sandbox_adjacent_post_sort' );
 
 // Add page slug to body class
 function sandbox_add_slug_body_class( $classes ) {
