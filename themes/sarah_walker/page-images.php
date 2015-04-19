@@ -20,14 +20,12 @@ Template Name: Images
         if ( $works->have_posts() ):
           while ( $works->have_posts() ):
             $works->the_post();
-
+            $post_meta_json = json_encode(get_post_meta($post->ID));
+            $post_meta = htmlentities($post_meta_json);
             $images = get_attached_media('image');
             foreach ( $images as $image ):
-              $attrs = array(
-                'data-image-full' => $image->guid
-              );
-              echo '<a href="'.get_permalink().'">';
-                echo wp_get_attachment_image($image->ID, 'medium', false, $attrs);
+              echo '<a href="'.get_permalink().'" data-lightbox data-image-full="'.$image->guid.'" data-title="'.get_the_title().'" data-post-meta="'.$post_meta.'">';
+                echo wp_get_attachment_image($image->ID, 'medium', false);
               echo '</a>';
             endforeach;
 
