@@ -33,14 +33,13 @@ Website developed by Dylan Fisher
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="<?php echo  bloginfo('stylesheet_url'); ?>" />
   <script src="<?php echo get_bloginfo('template_url'); ?>/js/modernizr.custom.45797.js"></script>
-  <?php wp_enqueue_script('jquery') // runs in noConflict mode ?>
   <?php wp_head() // For plugins ?>
 </head>
-<body <?php body_class() ?>>
+<body>
   <!--[if lte IE 9]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
-  <div class="wrapper">
+  <div <?php body_class('wrapper') ?>>
     <header>
       <div class="sidebar">
         <h1 class="site-title">

@@ -8,11 +8,27 @@
 
 
 //
+// Enqueue scripts
+//
+
+function sandbox_enqueue_scripts() {
+  $application = sandbox_is_local() ? 'application.js' : 'application.min.js';
+  wp_enqueue_script('jquery');
+  wp_enqueue_script(
+    'application',
+    get_stylesheet_directory_uri() . '/js/build/' . $application,
+    array('jquery')
+  );
+}
+add_action( 'wp_enqueue_scripts', 'sandbox_enqueue_scripts' );
+
+
+//
 // Enables
 //
 
 // Custom menus
-add_theme_support( 'menus' );
+add_theme_support('menus');
 
 // Custom Image Sizes
 // add_image_size( 'custom-image-size-name', 300, 300, true ); // Custom Image - Name, Width, Height, Hard Crop boolean
@@ -79,6 +95,16 @@ add_action( 'admin_menu', 'sandbox_remove_menus' );
 //
 // Custom functions
 //
+
+// Check if running on localhost
+function sandbox_is_local() {
+  $localhost_whitelist = array( '127.0.0.1', '::1' );
+  if( in_array($_SERVER['REMOTE_ADDR'], $localhost_whitelist) ) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // Function to create slug out of text
 function sandbox_slugify( $text ) {
