@@ -8,20 +8,24 @@ Template Name: Home
 <?php the_post() ?>
     <div id="page-<?php the_ID() ?>" <?php post_class() ?>>
       <?php
-        $querystr = "
-          SELECT wposts.ID, wposts.post_title
-          FROM $wpdb->posts wposts
-          WHERE wposts.post_type = 'attachment'
-          AND wposts.post_mime_type = 'image/jpeg'
-          ORDER BY RAND() LIMIT 1
-        ";
-
-        $id = $wpdb->get_results($querystr, ARRAY_A);
-
-        $title = wp_get_attachment_image($id[0]['post_title']);
-        $url =  wp_get_attachment_url($id[0]['ID']);
+        $args = array(
+          'posts_per_page'   => 1,
+          'category_name'    => 'featured',
+          'post_type'        => 'post',
+          'orderby'          => 'rand'
+        );
+        $posts_array = get_posts( $args );
+        $featured_post = $posts_array[0];
+        $featured_image = get_attached_media('image', $featured_post);
+        $featured_image = sandbox_flatten($featured_image);
+        if($featured_image):
+          $featured_image = $featured_image[0];
+          $featured_image = wp_get_attachment_image_src($featured_image->ID, 'full');
+          $url = $featured_image[0];
+          echo '<div class="featured-image" style="background-image: url(' . $url . ')"></div>';
+        endif;
       ?>
-      <div class="featured-image" style="background-image: url(<?php echo $url ?>)"></div>
+      <?php wp_reset_postdata(); ?>
     </div><!-- .post -->
   </div><!-- .content -->
 <?php get_footer() ?>

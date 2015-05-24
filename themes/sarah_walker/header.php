@@ -53,9 +53,9 @@ Website developed by Dylan Fisher
               echo '<div>'.get_field('year').', '.get_field('dimensions').',<br>'.get_field('medium').'</div>';
             echo '</div>';
             echo '<br>';
-            previous_post_link('%link', 'Previous');
+            next_post_link('%link', 'Previous');
             echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-            next_post_link('%link', 'Next');
+            previous_post_link('%link', 'Next');
           endif;
         ?>
       </div>

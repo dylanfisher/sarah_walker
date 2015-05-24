@@ -8,8 +8,12 @@
 
 header {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 20%;
-  top: $content-margin-top;
+  height: 100%;
+  padding-top: $content-margin-top;
+  background: linear-gradient(to right, $body-color, transparent);
 }
 
 .content {
@@ -43,14 +47,6 @@ header {
       &:hover {
         opacity: 0.8;
       }
-    }
-  }
-}
-
-.page-statement {
-  .entry-content {
-    p + p {
-      text-indent: 4em;
     }
   }
 }

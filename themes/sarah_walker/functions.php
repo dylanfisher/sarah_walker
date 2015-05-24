@@ -106,6 +106,13 @@ function sandbox_is_local() {
   }
 }
 
+// Flatten an array
+function sandbox_flatten(array $array) {
+  $return = array();
+  array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+  return $return;
+}
+
 // Function to create slug out of text
 function sandbox_slugify( $text ) {
   $str = strtolower( trim( $text ) );

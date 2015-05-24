@@ -362,7 +362,7 @@ html, button, input, select, textarea {
   color: #A0A0A0; }
 
 html {
-  background-color: #181B1C; }
+  background-color: #212425; }
 
 a {
   color: #A0A0A0;
@@ -502,8 +502,12 @@ h3 {
 
 header {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 20%;
-  top: 40px; }
+  height: 100%;
+  padding-top: 40px;
+  background: linear-gradient(to right, #212425, transparent); }
 
 .content {
   width: 80%;
@@ -527,9 +531,6 @@ header {
     cursor: pointer; }
     .page-images .page img:hover {
       opacity: 0.8; }
-
-.page-statement .entry-content p + p {
-  text-indent: 4em; }
 
 .page-cv .entry-content {
   max-width: none; }
@@ -611,7 +612,6 @@ header li {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.2;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover; }
