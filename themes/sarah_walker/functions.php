@@ -40,12 +40,12 @@ add_theme_support('menus');
 // Disables
 //
 
-// Disable automatic updates for certain plugins
-function filter_plugin_updates( $value ) {
-    unset( $value->response['wp-pjax/wp-pjax.php'] );
-    return $value;
+function sandbox_filter_plugin_updates( $value ) {
+  if ( isset( $value ) && is_object( $value ) ) {
+    unset($value->response['wp-pjax/wp-pjax.php']);
+  }
 }
-add_filter( 'site_transient_update_plugins', 'filter_plugin_updates' );
+add_filter( 'site_transient_update_plugins', 'sandbox_filter_plugin_updates' );
 
 // Disable Admin Bar
 add_filter('show_admin_bar', '__return_false');
