@@ -596,10 +596,12 @@ header {
   cursor: pointer; }
 
 .lightbox-next {
-  right: 0; }
+  right: 0;
+  cursor: e-resize; }
 
 .lightbox-previous {
-  left: 0; }
+  left: 0;
+  cursor: w-resize; }
 
 header ul, header li {
   margin: 0;

@@ -155,8 +155,10 @@ $indent-size: 4em;
 
 .lightbox-next {
   right: 0;
+  cursor: e-resize;
 }
 
 .lightbox-previous {
   left: 0;
+  cursor: w-resize;
 }
