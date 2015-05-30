@@ -30,8 +30,8 @@ add_action( 'wp_enqueue_scripts', 'sandbox_enqueue_scripts' );
 // Custom menus
 add_theme_support('menus');
 
-// Custom Image Sizes
-// add_image_size( 'custom-image-size-name', 300, 300, true ); // Custom Image - Name, Width, Height, Hard Crop boolean
+// Custom Image Sizes (Name, Width, Height, Hard Crop boolean)
+add_image_size( 'small', 90, 90, false );
 
 // Check for custom Single Post templates by category ID. Format for new template names is single-category[ID#].php (ommiting the brackets)
 // add_filter('single_template', create_function('$t', 'foreach( (array) get_the_category() as $cat ) { if ( file_exists(TEMPLATEPATH . "/single-{$cat->term_id}.php") ) return TEMPLATEPATH . "/single-{$cat->term_id}.php"; } return $t;' ));

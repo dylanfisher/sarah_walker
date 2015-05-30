@@ -13,7 +13,10 @@ header {
   width: 20%;
   height: 100%;
   padding-top: $content-margin-top;
-  background: linear-gradient(to right, $body-color, transparent);
+
+  .home & {
+    background: linear-gradient(to right, $body-color, transparent);
+  }
 }
 
 .content {
@@ -100,7 +103,7 @@ $indent-size: 4em;
   top: 0;
   left: 0;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   overflow: hidden;
 }
 
@@ -113,11 +116,23 @@ $indent-size: 4em;
   max-height: 100%;
   padding: 20px;
   text-align: center;
-  overflow: auto;
 }
 
 .lightbox-inner {
   display: inline-block;
+}
+
+.lightbox-image-wrapper {
+  display: none;
+  opacity: 0;
+
+  &.active {
+    display: block;
+  }
+}
+
+.lightbox-image {
+  cursor: pointer;
 }
 
 .lightbox-work-info {
@@ -127,4 +142,21 @@ $indent-size: 4em;
   .title {
     color: #fff;
   }
+}
+
+.lightbox-next,
+.lightbox-previous {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 80px;
+  cursor: pointer;
+}
+
+.lightbox-next {
+  right: 0;
+}
+
+.lightbox-previous {
+  left: 0;
 }

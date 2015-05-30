@@ -49,13 +49,12 @@ Website developed by Dylan Fisher
         <?php
           if(is_single()):
             echo '<div class="single-work-info">';
+              next_post_link('%link', 'Previous ');
+              previous_post_link('%link', 'Next ');
+              echo '<br><br>';
               echo '<h3>'.get_the_title().'</h3>';
               echo '<div>'.get_field('year').', '.get_field('dimensions').',<br>'.get_field('medium').'</div>';
             echo '</div>';
-            echo '<br>';
-            next_post_link('%link', 'Previous');
-            echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-            previous_post_link('%link', 'Next');
           endif;
         ?>
       </div>

@@ -385,8 +385,7 @@ hr {
 img {
   vertical-align: middle;
   max-width: 100%;
-  width: auto;
-  height: auto; }
+  width: auto; }
 
 fieldset {
   border: 0;
@@ -506,8 +505,9 @@ header {
   left: 0;
   width: 20%;
   height: 100%;
-  padding-top: 40px;
-  background: linear-gradient(to right, #212425, transparent); }
+  padding-top: 40px; }
+  .home header {
+    background: linear-gradient(to right, #212425, transparent); }
 
 .content {
   width: 80%;
@@ -560,7 +560,7 @@ header {
   top: 0;
   left: 0;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   overflow: hidden; }
 
 .lightbox-outer {
@@ -571,17 +571,38 @@ header {
   width: 100%;
   max-height: 100%;
   padding: 20px;
-  text-align: center;
-  overflow: auto; }
+  text-align: center; }
 
 .lightbox-inner {
   display: inline-block; }
+
+.lightbox-image-wrapper {
+  display: none;
+  opacity: 0; }
+  .lightbox-image-wrapper.active {
+    display: block; }
+
+.lightbox-image {
+  cursor: pointer; }
 
 .lightbox-work-info {
   text-align: left;
   margin-top: 1em; }
   .lightbox-work-info .title {
     color: #fff; }
+
+.lightbox-next, .lightbox-previous {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 80px;
+  cursor: pointer; }
+
+.lightbox-next {
+  right: 0; }
+
+.lightbox-previous {
+  left: 0; }
 
 header ul, header li {
   margin: 0;
