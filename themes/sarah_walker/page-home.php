@@ -23,7 +23,9 @@ Template Name: Home
             $featured_image = $featured_image[0];
             $featured_image = wp_get_attachment_image_src($featured_image->ID, 'full');
             $url = $featured_image[0];
-            echo '<div class="featured-image" style="background-image: url(' . $url . ')"></div>';
+            echo '<a href="' . get_permalink( get_page_by_path('images') ) . '">';
+              echo '<div class="featured-image" style="background-image: url(' . $url . ')"></div>';
+            echo '</a>';
           endif;
         else:
           echo 'No featured image.';

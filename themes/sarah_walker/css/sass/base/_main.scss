@@ -7,22 +7,28 @@
 }
 
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 20%;
+  max-width: 300px;
   height: 100%;
+  min-height: 100vh;
+  float: left;
   padding-top: $content-margin-top;
 
   .home & {
-    background: linear-gradient(to right, $body-color, transparent);
+    background: $body-color;
   }
 }
 
 .content {
   width: 80%;
-  margin-left: 20%;
-  padding-bottom: 40px;
+  padding-bottom: 3em;
+  padding-right: 3em;
+  float: left;
+
+  .home & {
+    min-height: 100vh;
+    position: relative;
+  }
 }
 
 .entry-content {
@@ -52,6 +58,11 @@ header {
       }
     }
   }
+}
+
+.permalink {
+  margin-top: 1em;
+  display: inline-block;
 }
 
 $indent-size: 4em;
@@ -105,39 +116,60 @@ $indent-size: 4em;
   z-index: 1;
   background: rgba(0, 0, 0, 0.9);
   overflow: hidden;
+  user-select: none;
+
+  div {
+    height: 100%;
+  }
 }
 
 .lightbox-outer {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   width: 100%;
-  max-height: 100%;
-  padding: 20px;
+  height: 100%;
+  padding: 3em;
   text-align: center;
 }
 
 .lightbox-inner {
-  display: inline-block;
+  // display: inline-block;
 }
 
 .lightbox-image-wrapper {
+  @extend %clearfix;
   display: none;
-  opacity: 0;
+  // opacity: 0;
 
   &.active {
     display: block;
   }
 }
 
+.lightbox-image-inner-wrapper {
+  width: calc(100% - 160px);
+  float: left;
+  padding-bottom: 3em;
+}
+
 .lightbox-image {
   cursor: pointer;
+  max-height: 100%;
 }
 
 .lightbox-work-info {
+  width: calc(160px - 3em);
+  height: auto !important;
   text-align: left;
-  margin-top: 1em;
+  margin-right: 3em;
+  float: left;
+  z-index: 1;
+  position: relative;
+
+  div {
+    height: auto;
+  }
 
   .title {
     color: #fff;
@@ -149,16 +181,38 @@ $indent-size: 4em;
   position: fixed;
   top: 0;
   height: 100%;
-  width: 80px;
+  width: 200px;
   cursor: pointer;
+
+  &:hover {
+    &:before {
+      color: #fff;
+    }
+  }
+
+  &:before {
+    position: absolute;
+    bottom: 3em;
+    transition: color $tt;
+  }
 }
 
 .lightbox-next {
   right: 0;
   cursor: e-resize;
+
+  &:before {
+    content: "Next";
+    right: 3em;
+  }
 }
 
 .lightbox-previous {
   left: 0;
   cursor: w-resize;
+
+  &:before {
+    content: "Previous";
+    left: 3em;
+  }
 }

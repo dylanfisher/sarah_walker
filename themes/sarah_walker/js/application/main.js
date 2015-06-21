@@ -26,8 +26,6 @@ jQuery(document).ready(function($){
           $('body').append('<div class="lightbox"><div class="lightbox-outer"><div class="lightbox-inner"></div></div></div>');
           $('.lightbox-inner').append('<div class="lightbox-images">' + images.join('') + '</div>' + controls);
           $('.lightbox-images .lightbox-image-wrapper').eq(1).addClass('active');
-
-          checkLightboxOverflow();
         });
 
       } // init
@@ -43,15 +41,12 @@ jQuery(document).ready(function($){
 
   $(document).on('pjax:end', function() {
     app.init();
-  });
-
-  $(window).resize(function(){
-    checkLightboxOverflow();
+    closeLightbox();
   });
 
   $(document).on('click', '.lightbox', function(e){
     if($('body').hasClass('lightbox-open')) {
-      if(!e.target.closest('.lightbox-image, .lightbox-next, .lightbox-previous')) {
+      if(!e.target.closest('.lightbox-image, .lightbox-next, .lightbox-previous, .permalink')) {
         closeLightbox();
       }
     }
@@ -93,8 +88,10 @@ jQuery(document).ready(function($){
   };
 
   var closeLightbox = function() {
-    $('body').removeClass('lightbox-open');
-    $('.lightbox').remove();
+    if($('body').hasClass('lightbox-open')) {
+      $('body').removeClass('lightbox-open');
+      $('.lightbox').remove();
+    }
   };
 
   var prevImage = function() {
@@ -104,7 +101,6 @@ jQuery(document).ready(function($){
     $('.lightbox-image-wrapper').last().remove();
     var newImage = assembleImage($('[data-lightbox].active').prevWrap());
     $('.lightbox-images').prepend(newImage);
-    checkLightboxOverflow();
   };
 
   var nextImage = function() {
@@ -114,7 +110,6 @@ jQuery(document).ready(function($){
     $('.lightbox-image-wrapper').first().remove();
     var newImage = assembleImage($('[data-lightbox].active').nextWrap());
     $('.lightbox-images').append(newImage);
-    checkLightboxOverflow();
   };
 
   var setPrevActive = function(el) {
@@ -129,6 +124,7 @@ jQuery(document).ready(function($){
     var url = el.attr('data-image-full');
     var title = el.attr('data-title');
     var meta  = el.attr('data-post-meta');
+    var permalink = el.attr('href');
     meta = JSON.parse(meta);
     var year = meta.year ? meta.year[0] : '';
     var dimensions = meta.dimensions ? meta.dimensions[0] : '';
@@ -138,36 +134,15 @@ jQuery(document).ready(function($){
     var workInfoYear = '<div class="year">' + year + '</div>';
     var workInfoDimensions = '<div class="dimensions">' + dimensions + '</div>';
     var workInfoMedium = '<div class="medium">' + medium + '</div>';
-    var workInfo = workInfoTitle + workInfoYear + workInfoDimensions + workInfoMedium;
+    var workPermalink = '<a href="' + permalink + '" class="permalink" title="Permalink">&#8734;</a>';
+    var workInfo = workInfoTitle + workInfoYear + workInfoDimensions + workInfoMedium + workPermalink;
 
-    return '<div class="lightbox-image-wrapper"><img class="lightbox-image" src="' + url + '"><div class="lightbox-work-info">' + workInfo + '</div></div>';
+    var lightboxWork = '<div class="lightbox-work-info">' + workInfo + '</div>';
+    var lightboxImage = '<div class="lightbox-image-inner-wrapper"><img class="lightbox-image" src="' + url + '"></div>';
+
+    return '<div class="lightbox-image-wrapper">' + lightboxWork + lightboxImage + '</div>';
   };
 
-  var checkLightboxOverflow = function() {
-    var windowHeight = $(window).height();
-    if(isLightboxOpen()) {
-      var lightbox = $('.lightbox');
-      var inner = lightbox.find('.lightbox-inner');
-      var activeImageWrapper = lightbox.find('.lightbox-image-wrapper.active');
-      var image = activeImageWrapper.find('.lightbox-image');
-      var info = activeImageWrapper.find('.lightbox-work-info');
-      var maxHeight = windowHeight - 60;
-
-      activeImageWrapper.imagesLoaded(function(){
-        var innerHeight = inner.height();
-        var infoHeight = info.height();
-        var heightDifference = maxHeight - infoHeight;
-        image.css({height: ''});
-        if(innerHeight > maxHeight) {
-          image.css({height: heightDifference});
-        } else {
-          image.css({height: ''});
-        }
-
-        activeImageWrapper.css({opacity: 1});
-      });
-    }
-  };
 
   $.fn.nextWrap = function( selector ) {
     var $next = $(this).next( selector );

@@ -28,9 +28,24 @@ header {
 
 .single-work-info {
   margin-top: $content-margin-top;
+  position: relative;
 
   h3 {
     margin: 0 0 1em;
+  }
+
+  .previous,
+  .next {
+    position: absolute;
+    top: 0;
+  }
+
+  .previous {
+    left: 0;
+  }
+
+  .next {
+    right: 3em;
   }
 }
 
