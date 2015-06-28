@@ -69,8 +69,8 @@ class WP_pjax {
    * @return void
    */
   public function register_scripts(){
-    wp_register_script('jquery-pjax', plugins_url('assets/js/jquery.pjax.js', __FILE__), array('jquery'), '0.0.1', true);
-    wp_register_script('site-pjax', plugins_url('assets/js/site-pjax.js', __FILE__), array('jquery-pjax'), '0.0.1', true);
+    wp_register_script('jquery-pjax', plugins_url('assets/js/jquery.pjax.min.js', __FILE__), array('jquery'), '0.0.1', true);
+    wp_register_script('site-pjax', plugins_url('assets/js/site-pjax.min.js', __FILE__), array('jquery-pjax'), '0.0.1', true);
   }
 
   /**
