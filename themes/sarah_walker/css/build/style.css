@@ -1,24 +1,9 @@
 /*!
-Theme Name: 5andbox
+Theme Name: Sarah Walker
 Theme URI: https://github.com/dylanfisher/5andbox
 Author: <a href="http://www.dylanfisher.com/">Dylan Fisher</a>
 Description: This theme is a stripped down and repurposed version of the original Sandbox Wordpress theme. It incorporates the HTML5 boilerplate, SASS and a Grunt workflow.
 Version: 1.0
-                          _
-                        .' `'.__
-                       /      \ `'"-,
-      .-''''--...__..-/ .     |          .'               ; :'     '.  a   |
-   /                 | :.       \     =  ;                   \':.      /  ,-.__;.-;`
- /|     .              '--._   /-.7`._..-;`
-; |       '                |`-'      \  =|
-|/\        .   -' /     /  ;         |  =/
-(( ;.       ,_  .:|     | /     /\   | =|
- ) / `\     | `""`;     / |    | /   / =/
-   | ::|    |      \    \ \    \ `--' =/
-  /  '/\    /       )    |/     `-...-`
- /    | |  `\    /-'    /;
- \  ,,/ |    \   D    .'    `""`   \  nnh  D_.-'L__nnh
-          `"""`
 */
 .wrapper, .lightbox-image-wrapper {
   *zoom: 1; }
@@ -400,7 +385,7 @@ textarea {
   color: #A0A0A0; }
 
 html {
-  background-color: #212425; }
+  background-color: #1B1D1E; }
 
 a {
   color: #A0A0A0;
@@ -553,7 +538,7 @@ header {
   float: left;
   padding-top: 3em; }
   .home header {
-    background: #212425; }
+    background: #1B1D1E; }
 
 .content {
   width: 80%;
