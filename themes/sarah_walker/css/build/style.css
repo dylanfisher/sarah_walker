@@ -5,14 +5,13 @@ Author: <a href="http://www.dylanfisher.com/">Dylan Fisher</a>
 Description: This theme is a stripped down and repurposed version of the original Sandbox Wordpress theme. It incorporates the HTML5 boilerplate, SASS and a Grunt workflow.
 Version: 1.0
 */
-.wrapper, .lightbox-image-wrapper {
+.wrapper {
   *zoom: 1; }
   .wrapper:before,
-  .lightbox-image-wrapper:before,
-  .wrapper:after, .lightbox-image-wrapper:after {
+  .wrapper:after {
     content: " ";
     display: table; }
-  .wrapper:after, .lightbox-image-wrapper:after {
+  .wrapper:after {
     clear: both; }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
@@ -385,7 +384,7 @@ textarea {
   color: #A0A0A0; }
 
 html {
-  background-color: #1B1D1E; }
+  background-color: #1D2021; }
 
 a {
   color: #A0A0A0;
@@ -538,7 +537,7 @@ header {
   float: left;
   padding-top: 3em; }
   .home header {
-    background: #1B1D1E; }
+    background: #1D2021; }
 
 .content {
   width: 80%;
@@ -591,88 +590,6 @@ header {
 .page-cv ul > li > ul {
   padding-left: 4em;
   margin-bottom: 1em; }
-
-.lightbox-open {
-  position: fixed; }
-
-.lightbox {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.9);
-  overflow: hidden;
-  user-select: none; }
-  .lightbox div {
-    height: 100%; }
-
-.lightbox-outer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 3em;
-  text-align: center; }
-
-.lightbox-image-wrapper {
-  display: none; }
-  .lightbox-image-wrapper.active {
-    display: block; }
-
-.lightbox-image-inner-wrapper {
-  width: calc(100% - 160px);
-  float: left;
-  padding-bottom: 3em; }
-
-.lightbox-image {
-  cursor: pointer;
-  max-height: 100%; }
-
-.lightbox-work-info {
-  width: calc(160px - 3em);
-  height: auto !important;
-  text-align: left;
-  margin-right: 3em;
-  float: left;
-  z-index: 1;
-  position: relative; }
-  .lightbox-work-info div {
-    height: auto; }
-  .lightbox-work-info .title {
-    color: #fff; }
-
-.lightbox-next,
-.lightbox-previous {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 200px;
-  cursor: pointer; }
-  .lightbox-next:hover:before,
-  .lightbox-previous:hover:before {
-    color: #fff; }
-  .lightbox-next:before,
-  .lightbox-previous:before {
-    position: absolute;
-    bottom: 3em;
-    transition: color 0.6s; }
-
-.lightbox-next {
-  right: 0;
-  cursor: e-resize; }
-  .lightbox-next:before {
-    content: "Next";
-    right: 3em; }
-
-.lightbox-previous {
-  left: 0;
-  cursor: w-resize; }
-  .lightbox-previous:before {
-    content: "Previous";
-    left: 3em; }
 
 header ul,
 header li {
