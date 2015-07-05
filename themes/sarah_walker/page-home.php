@@ -23,14 +23,12 @@ Template Name: Home
           while ( $detail_query->have_posts() ):
             $detail_query->the_post();
             if( have_rows('detail_images') ):
-              while ( have_rows('detail_images') ) : the_row();
-                $image = get_sub_field('image');
-                $size = 'large';
-                $url = $image['sizes'][$size];
-                echo '<a href="' . get_permalink( get_page_by_path('images') ) . '">';
-                  echo '<div class="featured-image" style="background-image: url(' . $url . ')"></div>';
-                echo '</a>';
-              endwhile;
+              $rows = get_field('detail_images' );
+              $rand_row = $rows[ array_rand( $rows ) ];
+              $rand_row_image = $rand_row['image'];
+              echo '<a href="' . get_permalink( get_page_by_path('images') ) . '">';
+                echo '<div class="featured-image" style="background-image: url(' . $rand_row_image['url'] . ')"></div>';
+              echo '</a>';
             endif;
           endwhile;
         endif;
