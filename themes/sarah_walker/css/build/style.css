@@ -554,6 +554,8 @@ header {
 
 .single .post {
   margin-top: 3em; }
+  .single .post img {
+    max-height: 800px; }
 
 .page-images .page {
   margin-top: 3em; }
@@ -613,13 +615,16 @@ header li {
   .single-work-info h3 {
     margin: 0 0 1em; }
   .single-work-info .previous,
-  .single-work-info .next {
+  .single-work-info .next,
+  .single-work-info .all {
     position: absolute;
     top: 0; }
   .single-work-info .previous {
     left: 0; }
   .single-work-info .next {
     right: 3em; }
+  .single-work-info .all {
+    left: calc(50% - 17px); }
 
 .menu [class*="current"] a {
   color: #fff; }

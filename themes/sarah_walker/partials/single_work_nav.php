@@ -1,4 +1,7 @@
 <?php
+  $images_page = get_page_by_path('images');
+  $images_page = get_permalink($images_page);
+
   echo '<div class="single-work-info">';
     echo '<div class="previous">';
       if(get_next_post_link()) {
@@ -7,6 +10,7 @@
         echo '<span class="disabled">Previous</span>';
       }
     echo '</div>';
+    echo '<a class="all" href="'.$images_page.'">All</a>';
     echo '<div class="next">';
       if(get_previous_posts_link()) {
         echo '<span class="disabled">Next</span>';

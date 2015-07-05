@@ -10,7 +10,7 @@
             'data-image-full' => $image->guid
           );
           echo '<a href="'.$images_page.'">';
-            echo wp_get_attachment_image($image->ID, 'full', false, $attrs);
+            echo wp_get_attachment_image($image->ID, 'large', false, $attrs);
           echo '</a>';
         endforeach;
       ?>

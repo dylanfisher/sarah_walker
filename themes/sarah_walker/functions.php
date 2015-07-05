@@ -13,14 +13,15 @@
 
 function sandbox_enqueue_scripts() {
   $application = sandbox_is_local() ? 'application.js' : 'application.min.js';
-  wp_enqueue_script('jquery');
   wp_enqueue_script(
     'application',
     get_stylesheet_directory_uri() . '/js/build/' . $application,
-    array('jquery')
+    array(),
+    null,
+    true
   );
 }
-add_action( 'wp_enqueue_scripts', 'sandbox_enqueue_scripts' );
+// add_action( 'wp_enqueue_scripts', 'sandbox_enqueue_scripts' );
 
 
 //
@@ -104,6 +105,20 @@ function sandbox_is_local() {
   } else {
     return false;
   }
+}
+
+// Get an <img> at size from an ACF image field
+function sandbox_image($acf_image_field_name='image', $image_size='large', $classes='') {
+  $image = get_field($acf_image_field_name); // check for a top level field
+  if(empty($image)) $image = get_sub_field($acf_image_field_name); // check for a sub-field
+  $alt = $image['alt'];
+  if(empty($alt)) $alt = $image['title'];
+  $size = $image_size;
+  $url = $image['sizes'][$size];
+  $url_small = $image['sizes']['small'];
+  $width = $image['sizes'][$size.'-width'];
+  $height = $image['sizes'][$size.'-height'];
+  echo '<img src="'.$url_small.'" data-src="'.$url.'" width="'.$width.'" height="'.$height.'" alt="'.$alt.'" class="lazyload '.$classes.'">';
 }
 
 // Flatten an array

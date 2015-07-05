@@ -39,6 +39,10 @@ header {
 .single {
   .post {
     margin-top: $content-margin-top;
+
+    img {
+      max-height: 800px;
+    }
   }
 }
 

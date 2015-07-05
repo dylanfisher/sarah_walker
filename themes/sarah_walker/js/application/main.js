@@ -1,8 +1,5 @@
-jQuery(document).ready(function($){
+(function() {
 
-  $(document).on('pjax:end', function() {
-    ga('set', 'location', window.location.href);
-    ga('send', 'pageview');
-  });
+  document.createElement( "picture" );
 
-});
+})();

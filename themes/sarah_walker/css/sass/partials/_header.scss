@@ -35,7 +35,8 @@ header {
   }
 
   .previous,
-  .next {
+  .next,
+  .all {
     position: absolute;
     top: 0;
   }
@@ -46,6 +47,10 @@ header {
 
   .next {
     right: 3em;
+  }
+
+  .all {
+    left: calc(50% - 17px);
   }
 }
 
