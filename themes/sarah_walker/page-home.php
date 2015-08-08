@@ -11,9 +11,13 @@ Template Name: Home
         $args = array(
           'posts_per_page'   => 1,
           'post_type'        => 'post',
-          'meta_key'         => 'detail_images',
-          'meta_value'       => '',
-          'compare'          => '!=',
+          'meta_query' => array(
+            array(
+              'key'     => 'detail_images',
+              'value'   => '0',
+              'compare' => 'NOT LIKE',
+            ),
+          ),
           'orderby'          => 'rand'
         );
 
@@ -22,6 +26,7 @@ Template Name: Home
         if ( $detail_query->have_posts() ):
           while ( $detail_query->have_posts() ):
             $detail_query->the_post();
+
             if( have_rows('detail_images') ):
               $rows = get_field('detail_images' );
               $rand_row = $rows[ array_rand( $rows ) ];
