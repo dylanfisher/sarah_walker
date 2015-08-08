@@ -524,6 +524,9 @@ h3 {
   h3:first-child {
     margin: 1em 0; }
 
+.wrapper {
+  min-width: 1000px; }
+
 header {
   width: 20%;
   max-width: 300px;

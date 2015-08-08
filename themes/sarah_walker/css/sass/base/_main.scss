@@ -4,6 +4,7 @@
 
 .wrapper {
   @extend %clearfix;
+  min-width: $min-wrapper-width;
 }
 
 header {
